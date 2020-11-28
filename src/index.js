@@ -18,7 +18,6 @@ function toHex(n) {
 function Particles({points}) {
 
   const initialPositions = points.map(v=>v.slice(0,3).map(w=>Number(w))).flat()
-  console.log(initialPositions)
   const initialColors = points.map(v=>v.slice(3).map(w=>Number(w)/255)).flat()
   const uniforms = useMemo(() => ({ time: { value: 1.0 } }), [])
   const positions = useMemo(() => new Float32Array(initialPositions), [initialPositions])
