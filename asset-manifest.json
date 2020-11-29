@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.84523e09.chunk.css",
-    "main.js": "/static/js/main.ec82bfa9.chunk.js",
-    "main.js.map": "/static/js/main.ec82bfa9.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.08150bc2.js",
-    "runtime-main.js.map": "/static/js/runtime-main.08150bc2.js.map",
-    "static/js/2.1828f943.chunk.js": "/static/js/2.1828f943.chunk.js",
-    "static/js/2.1828f943.chunk.js.map": "/static/js/2.1828f943.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.35ba9e44b98ec619e2c347edd7b76a7e.js": "/precache-manifest.35ba9e44b98ec619e2c347edd7b76a7e.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.84523e09.chunk.css.map": "/static/css/main.84523e09.chunk.css.map",
-    "static/media/32FFF.xyz": "/static/media/32FFF.1c4f20fe.xyz"
+    "main.css": "/shader-points/static/css/main.84523e09.chunk.css",
+    "main.js": "/shader-points/static/js/main.ec82bfa9.chunk.js",
+    "main.js.map": "/shader-points/static/js/main.ec82bfa9.chunk.js.map",
+    "runtime-main.js": "/shader-points/static/js/runtime-main.b38231c7.js",
+    "runtime-main.js.map": "/shader-points/static/js/runtime-main.b38231c7.js.map",
+    "static/js/2.1828f943.chunk.js": "/shader-points/static/js/2.1828f943.chunk.js",
+    "static/js/2.1828f943.chunk.js.map": "/shader-points/static/js/2.1828f943.chunk.js.map",
+    "index.html": "/shader-points/index.html",
+    "precache-manifest.e5b7916054da9f336f368a2a6dd32c74.js": "/shader-points/precache-manifest.e5b7916054da9f336f368a2a6dd32c74.js",
+    "service-worker.js": "/shader-points/service-worker.js",
+    "static/css/main.84523e09.chunk.css.map": "/shader-points/static/css/main.84523e09.chunk.css.map",
+    "static/media/32FFF.xyz": "/shader-points/static/media/32FFF.1c4f20fe.xyz"
   },
   "entrypoints": [
-    "static/js/runtime-main.08150bc2.js",
+    "static/js/runtime-main.b38231c7.js",
     "static/js/2.1828f943.chunk.js",
     "static/css/main.84523e09.chunk.css",
     "static/js/main.ec82bfa9.chunk.js"
