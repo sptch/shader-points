@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/shader-points/static/css/main.84523e09.chunk.css",
-    "main.js": "/shader-points/static/js/main.1c16ebb5.chunk.js",
-    "main.js.map": "/shader-points/static/js/main.1c16ebb5.chunk.js.map",
+    "main.js": "/shader-points/static/js/main.c05cde2a.chunk.js",
+    "main.js.map": "/shader-points/static/js/main.c05cde2a.chunk.js.map",
     "runtime-main.js": "/shader-points/static/js/runtime-main.b38231c7.js",
     "runtime-main.js.map": "/shader-points/static/js/runtime-main.b38231c7.js.map",
     "static/js/2.1828f943.chunk.js": "/shader-points/static/js/2.1828f943.chunk.js",
     "static/js/2.1828f943.chunk.js.map": "/shader-points/static/js/2.1828f943.chunk.js.map",
     "index.html": "/shader-points/index.html",
-    "precache-manifest.5d20ffe47522d055cd91997e1cb6cd3c.js": "/shader-points/precache-manifest.5d20ffe47522d055cd91997e1cb6cd3c.js",
+    "precache-manifest.e94cf35611b2b5ea6f036df7ca07c1fd.js": "/shader-points/precache-manifest.e94cf35611b2b5ea6f036df7ca07c1fd.js",
     "service-worker.js": "/shader-points/service-worker.js",
     "static/css/main.84523e09.chunk.css.map": "/shader-points/static/css/main.84523e09.chunk.css.map",
     "static/media/32FFF.xyz": "/shader-points/static/media/32FFF.1c4f20fe.xyz"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b38231c7.js",
     "static/js/2.1828f943.chunk.js",
     "static/css/main.84523e09.chunk.css",
-    "static/js/main.1c16ebb5.chunk.js"
+    "static/js/main.c05cde2a.chunk.js"
   ]
 }
