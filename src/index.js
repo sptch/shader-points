@@ -9,12 +9,6 @@ import model from './assets/32FFF.xyz'
 
 extend({ OrbitControls })
 
-function toHex(n) {
-  var hex = n.toString(16);
-  while (hex.length < 2) {hex = "0" + hex; }
-  return hex;
-}
-
 function Particles({points}) {
 
   const initialPositions = points.map(v=>v.slice(0,3).map(w=>Number(w))).flat()
@@ -69,7 +63,7 @@ const App = ()=>{
       setPoints(lines.map(v=>v.split(' ')))
     }
     ParseModel()
-  },[ model, setPoints ])
+  },[ setPoints ])
 
   return <Canvas camera={{ position: [0, 0, 20] }}>
     {points && <Particles points={points} />}
