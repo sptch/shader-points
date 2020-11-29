@@ -62,7 +62,7 @@ const App = ()=>{
         await fetch( 
           window.location.hostname!=='sptch.github.io'?
           model:
-          "https://github.com/sptch/shader-points/blob/main/src/assets/32FFF.xyz?raw=true"
+          "https://github.com/sptch/shader-points/blob/gh-pages/static/media/32FFF.xyz?raw=true"
         )
       ).text()
       const lines = entries.split("\n")
