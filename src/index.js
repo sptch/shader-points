@@ -57,7 +57,14 @@ const App = ()=>{
   const [points, setPoints] = useState()
   useEffect(()=>{
     const ParseModel = async ()=>{
-      const entries = await (await fetch(model)).text()
+      console.log(window.location.hostname)
+      const entries = await (
+        await fetch( 
+          window.location.hostname!=='sptch.github.io'?
+          model:
+          "https://github.com/sptch/shader-points/raw/main/src/assets/32FFF.xyz"
+        )
+      ).text()
       const lines = entries.split("\n")
       console.log(lines[0])
       setPoints(lines.map(v=>v.split(' ')))
