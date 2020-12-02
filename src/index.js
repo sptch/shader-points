@@ -24,6 +24,9 @@ function Particles({points}) {
       geom.current.geometry.verticesNeedUpdate = true
     }
   })
+  useRender(({ gl, scene, camera }) => {
+    gl.render(scene, camera)
+  }, true)
 
   return (
     <points ref={geom}>
