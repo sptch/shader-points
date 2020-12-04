@@ -10,6 +10,20 @@ import { Route, useHistory } from 'react-router-dom'
 const THREE = require('three');
 const PLYLoader = require('three-ply-loader');
 
+const dict = {
+  default: {
+    position: [1.5, 1, 1.8],
+    target: [0.3, 1, 0]
+  },
+  'models/MaksyCrew.ply': {
+    position: [1.5, 1, 1.8],
+    target: [0.3, 1, 0]
+  },
+  'models/Lift.ply': {
+    position: [1.4, 1, -0.6],
+    target: [0.3, 1, 0]
+  }
+}
 function Particles({points}) {
 
   const uniforms = useMemo(() => ({ time: { value: 1.0 } }), [])
@@ -25,7 +39,7 @@ function Particles({points}) {
   })
 
   return (
-    <points ref={geom}>
+    <points ref={geom} rotation={[-Math.PI/2,0,0]}>
       <bufferGeometry attach="geometry">
         <bufferAttribute attachObject={["attributes", "position"]} count={positions.length / 3} array={positions} itemSize={3} />
         {/* <bufferAttribute attachObject={["attributes", "velocity"]} count={velocities.length / 3} array={velocities} itemSize={3} />
@@ -54,13 +68,11 @@ export default ({url})=>{
     PLYLoader(THREE);
 
     const loader = new THREE.PLYLoader();
-    const group = new THREE.Object3D();
     loader.load(url, function (geometry) {
       if(!points) {
         setPoints(geometry)
       }
     });
-    
   })
 
   return  <>
@@ -69,7 +81,7 @@ export default ({url})=>{
       width:'100vw', 
       height: '100vh', 
       position:'absolute', 
-      visibility: 'hidden',
+      visibility: points?'hidden':'visible',
       textAlign:'center',
       display: 'flex',
       alignItems: 'center', /* Vertical center alignment */
@@ -84,18 +96,18 @@ export default ({url})=>{
       fontWeight:'lighter'
     }} >
       <span style={{color:'white'}}>
-        {progress}
+        Loading...
       </span>
     </div>
 
     <Canvas 
       onClick={()=>console.log(controls.current, controls.current.object)} 
-      camera={{ position: [10, 5, -5] }}
+      camera={{ position: dict[url]?dict[url].position:dict.default.position }}
     >
       {points && <Particles points={points} />}
       <OrbitControls 
         ref={controls} 
-        target={[0, 3.3, 1.5]} 
+        target={dict[url]?dict[url].target:dict.default.target} 
       />
     </Canvas>
   </>
