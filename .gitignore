@@ -3,3 +3,4 @@ node_modules
 .vscode
 src/assets/big
 src/assets/big/*
+public/*.xyz

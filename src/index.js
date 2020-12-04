@@ -6,8 +6,6 @@ import fetchProgress from 'fetch-progress'
 import "./styles.css"
 import frag from './assets/frag'
 import vert from './assets/vert'
-import model from './assets/big/32FFF.xyz'
-
 
 function Particles({points}) {
 
@@ -55,7 +53,7 @@ const App = ()=>{
       console.log(window.location.hostname)
       const response = fetch( 
         window.location.hostname==='localhost'?
-        model: 'https://bby.blob.core.windows.net/$web/32FFF.xyz'
+        '32FFF.xyz': 'https://bby.blob.core.windows.net/$web/32FFF.xyz'
       ).then(
         fetchProgress({
           onProgress(progress) {
