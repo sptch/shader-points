@@ -53,19 +53,15 @@ export default ({url})=>{
   useEffect(()=>{
     PLYLoader(THREE);
 
-    console.log(url)
     const loader = new THREE.PLYLoader();
     const group = new THREE.Object3D();
     loader.load(url, function (geometry) {
       if(!points) {
         setPoints(geometry)
-        console.log(points)
       }
     });
     
   })
-  useEffect(()=>{console.log(points)},[points])
-
 
   return  <>
     <div style={{
