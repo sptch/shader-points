@@ -29,7 +29,7 @@ const App = ()=>{
   const [local] = useState(window.location.hostname==='localhost')
 
   return (
-    <Router>
+    <Router basename='/'>
       <Route path="/" exact >
         <Home/>
       </Route>
