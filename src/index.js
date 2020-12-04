@@ -1,17 +1,17 @@
 import React, { useEffect, useMemo, useRef, useState } from "react"
 import ReactDOM from "react-dom"
-import { Canvas, extend, useFrame, useThree } from "react-three-fiber"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { Canvas, useFrame } from "react-three-fiber"
+import { OrbitControls } from 'drei'
+import fetchProgress from 'fetch-progress'
 import "./styles.css"
 import frag from './assets/frag'
 import vert from './assets/vert'
-import model from './assets/32FFF.xyz'
+import model from './assets/big/32FFF.xyz'
 
-extend({ OrbitControls })
 
 function Particles({points}) {
 
-  const initialPositions = points.map(v=>v.slice(0,3).map(w=>Number(w))).flat()
+  const initialPositions = points.map(v=>v.slice(0,3).map(w=>Number(w))).filter(g=>g.find(v=>!isNaN(v))).map(v=>[v[0],v[2],v[1]]).flat()
   const initialColors = points.map(v=>v.slice(3).map(w=>Number(w)/255)).flat()
   const uniforms = useMemo(() => ({ time: { value: 1.0 } }), [])
   const positions = useMemo(() => new Float32Array(initialPositions), [initialPositions])
@@ -24,9 +24,6 @@ function Particles({points}) {
       geom.current.geometry.verticesNeedUpdate = true
     }
   })
-  useRender(({ gl, scene, camera }) => {
-    gl.render(scene, camera)
-  }, true)
 
   return (
     <points ref={geom}>
@@ -48,37 +45,71 @@ function Particles({points}) {
   )
 }
 
-function Controls() {
-  const controls = useRef()
-  const { camera, gl } = useThree()
-  useFrame(() => controls.current.update())
-  return <orbitControls ref={controls} args={[camera, gl.domElement]} enableDamping dampingFactor={0.05} rotateSpeed={0.6} />
-}
-
 const App = ()=>{
 
   const [points, setPoints] = useState()
+  const [progress, setProgress] = useState()
+  const camera = useRef()
+  const controls = useRef()
   useEffect(()=>{
-    const ParseModel = async ()=>{
       console.log(window.location.hostname)
-      const entries = await (
-        await fetch( 
-          window.location.hostname!=='sptch.github.io'?
-          model:
-          "https://github.com/sptch/shader-points/blob/gh-pages/static/media/32FFF.xyz?raw=true"
-        )
-      ).text()
-      const lines = entries.split("\n")
-      console.log(lines[0])
-      setPoints(lines.map(v=>v.split(' ')))
-    }
-    ParseModel()
+      const response = fetch( 
+        window.location.hostname==='localhost'?
+        model: 'https://bby.blob.core.windows.net/$web/32FFF.xyz'
+      ).then(
+        fetchProgress({
+          onProgress(progress) {
+            if(progress.percentage===100){
+              setProgress('Loading...');
+            }else{
+              setProgress(progress.percentage+'%');
+            }
+          },
+        })
+      ).then(r=>{ setProgress('Loading'); return r.text();}
+      ).then(data=>{
+        const lines = data.split("\n")
+        setPoints(lines.map(v=>v.split(' '))) 
+        setProgress('Loaded') 
+      })
   },[ setPoints ])
 
-  return <Canvas camera={{ position: [0, 0, 20] }}>
-    {points && <Particles points={points} />}
-    <Controls />
-  </Canvas>
+  return <>
+    <div style={{
+      backgroundColor:'black', 
+      width:'100vw', 
+      height: '100vh', 
+      position:'absolute', 
+      visibility: progress==='Loaded'?'hidden':'visible',
+      textAlign:'center',
+      display: 'flex',
+      alignItems: 'center', /* Vertical center alignment */
+      justifyContent: 'center',
+      top:0,
+      bottom:0, 
+      right:0, 
+      left:0,
+      backgroundBlendMode: 'normal',
+      fontFamily: 'Helvetica, Sans-Serif',
+      fontSize: '32px',
+      fontWeight:'lighter'
+    }} >
+      <span style={{color:'white'}}>
+        {progress}
+      </span>
+    </div>
+    <Canvas 
+      onClick={()=>console.log(controls.current, controls.current.object)} 
+      ref={camera} 
+      camera={{ position: [10, 5, -5] }}
+    >
+      {points && <Particles points={points} />}
+      <OrbitControls 
+        ref={controls} 
+        target={[0, 3.3, 1.5]} 
+      />
+    </Canvas>
+  </>
 }
 
 
