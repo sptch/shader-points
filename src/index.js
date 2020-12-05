@@ -29,7 +29,7 @@ const App = ()=>{
   const [local] = useState(window.location.hostname==='localhost')
 
   return (
-    <Router basename='/'>
+    <Router basename={local?"/":"/shader-points/"}>
       <Route path="/" exact >
         <Home/>
       </Route>
