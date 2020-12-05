@@ -19,7 +19,7 @@ const Home = ()=>{
       <Link to="/room">Room</Link>
     </li>
     <li>
-      <Link to="/will-not-match">Lift</Link>
+      <Link to="/lift">Lift</Link>
     </li>
   </ul>
   </div>
@@ -33,13 +33,13 @@ const App = ()=>{
       <Route path="/" exact >
         <Home/>
       </Route>
-      <Route path='/hall' exact >
+      <Route path='/hall' >
         <XYZModel url={local? 'models/32FFF.xyz': 'https://bby.blob.core.windows.net/$web/32FFF.xyz'} />
       </Route>
-      <Route path='/room' exact >
+      <Route path='/room' >
         <PLYModel url='models/MaksyCrew.ply' />
       </Route>
-      <Route path='/lift' exact >
+      <Route path='/lift' >
         <PLYModel url='models/Lift.ply' />
       </Route>
     </Router>
