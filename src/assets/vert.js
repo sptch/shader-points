@@ -1,7 +1,9 @@
 export default `
 uniform float time;
 varying vec3 vColor;
+varying vec3 pos;
 void main() {
+    pos = position;
     vColor = color;
     gl_Position = projectionMatrix 
         * modelViewMatrix

@@ -6,7 +6,14 @@ import { OrbitControls } from 'drei'
 import fetchProgress from 'fetch-progress'
 import frag from 'assets/frag'
 import vert from 'assets/vert'
+import fragRainbow from 'assets/frag_rainbow'
+import fragTint from 'assets/frag_tint'
+import vertDense from 'assets/vert_dense'
+import vertSmooth from 'assets/vert_smooth'
+import vertFast from 'assets/vert_fast'
+
 import { Route, useHistory } from 'react-router-dom'
+
 const THREE = require('three');
 const PLYLoader = require('three-ply-loader');
 
@@ -17,14 +24,18 @@ const dict = {
   },
   'models/MaksyCrew.ply': {
     position: [1.5, 1, 1.8],
-    target: [0.3, 1, 0]
+    target: [0.3, 1, 0],
+    vert: vertFast,
+    frag: frag
   },
   'models/Lift.ply': {
     position: [1.4, 1, -0.6],
-    target: [0.3, 1, 0]
+    target: [0.3, 1, 0],
+    vert: vertSmooth,
+    frag: fragTint
   }
 }
-function Particles({points}) {
+function Particles({points, url}) {
 
   const uniforms = useMemo(() => ({ time: { value: 1.0 } }), [])
   const positions = useMemo(() =>points.attributes.position.array, [points.attributes.position])
@@ -50,8 +61,8 @@ function Particles({points}) {
       <shaderMaterial 
         attach="material" 
         uniforms={uniforms}
-        vertexShader={vert}
-        fragmentShader={frag}
+        vertexShader={dict[url]?dict[url].vert:vert}
+        fragmentShader={dict[url]?dict[url].frag:frag}
         vertexColors
       />
     </points>
@@ -104,7 +115,7 @@ export default ({url})=>{
       onClick={()=>console.log(controls.current, controls.current.object)} 
       camera={{ position: dict[url]?dict[url].position:dict.default.position }}
     >
-      {points && <Particles points={points} />}
+      {points && <Particles points={points} {...{url}} />}
       <OrbitControls 
         ref={controls} 
         target={dict[url]?dict[url].target:dict.default.target} 

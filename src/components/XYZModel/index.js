@@ -5,6 +5,8 @@ import { OrbitControls } from 'drei'
 import fetchProgress from 'fetch-progress'
 import frag from 'assets/frag'
 import vert from 'assets/vert'
+import frag_rainbow from 'assets/frag_rainbow'
+import vert_dense from 'assets/vert_dense'
 
 function Particles({points}) {
 
@@ -34,8 +36,8 @@ function Particles({points}) {
       <shaderMaterial 
         attach="material" 
         uniforms={uniforms}
-        vertexShader={vert}
-        fragmentShader={frag}
+        vertexShader={vert_dense}
+        fragmentShader={frag_rainbow}
         vertexColors
       />
     </points>
