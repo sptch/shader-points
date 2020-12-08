@@ -7,6 +7,7 @@ import frag from 'assets/frag'
 import vert from 'assets/vert'
 import frag_rainbow from 'assets/frag_rainbow'
 import vert_dense from 'assets/vert_dense'
+import vert_smooth from "assets/vert_smooth"
 
 function Particles({points}) {
 
@@ -36,8 +37,8 @@ function Particles({points}) {
       <shaderMaterial 
         attach="material" 
         uniforms={uniforms}
-        vertexShader={vert_dense}
-        fragmentShader={frag_rainbow}
+        vertexShader={vert_smooth}
+        fragmentShader={frag}
         vertexColors
       />
     </points>
