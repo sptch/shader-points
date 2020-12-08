@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "16aecb52863bef6c362c86904e31022c",
+    "revision": "3032f3708cd4cb9a9a916cc4005e6385",
     "url": "/shader-points/index.html"
   },
   {
-    "revision": "adb76d860861f6220e75",
+    "revision": "93666c4ad82cfbaf43b4",
     "url": "/shader-points/static/css/main.84523e09.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/shader-points/static/js/2.74d29d93.chunk.js"
   },
   {
-    "revision": "adb76d860861f6220e75",
-    "url": "/shader-points/static/js/main.e433c433.chunk.js"
+    "revision": "93666c4ad82cfbaf43b4",
+    "url": "/shader-points/static/js/main.b34b007a.chunk.js"
   },
   {
     "revision": "aa25c80b5aa6abc5a8e4",
